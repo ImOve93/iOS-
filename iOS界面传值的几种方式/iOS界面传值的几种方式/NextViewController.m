@@ -23,6 +23,8 @@
         _textField = [[UITextField alloc] initWithFrame:CGRectMake(100, 100, 200, 40)];
         _textField.textColor = [UIColor blackColor];
         _textField.borderStyle = UITextBorderStyleLine;
+        
+        _textField.text = self.str;
     }
     
     return _textField;

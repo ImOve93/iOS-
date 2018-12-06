@@ -47,6 +47,10 @@
 #pragma mark - btn 按钮点击事件
 - (void)btnClick {
     NextViewController *nextVC = [[NextViewController alloc] init];
+    
+    //属性传值
+    nextVC.str = @"属性传值";
+    
     [self presentViewController:nextVC animated:YES completion:nil];
     
 }
