@@ -10,7 +10,7 @@
 #import "NextViewController.h"
 #import "DefaultInstance.h"
 
-@interface ViewController ()
+@interface ViewController ()<passValueDelegate>
 
 @property (nonatomic,strong)UILabel *label;
 @property (nonatomic,strong)UIButton *btn;
@@ -46,15 +46,19 @@
     return _btn;
 }
 
+- (void)passValue:(NSString *)str {
+    self.label.text = str;
+}
+
 #pragma mark - btn 按钮点击事件
 - (void)btnClick {
     NextViewController *nextVC = [[NextViewController alloc] init];
-    
+    nextVC.delegate = self;
     //属性传值
 //    nextVC.str = @"属性传值";
 //    [DefaultInstance sharedInstance].str = @"单例传值";
-    [[NSUserDefaults standardUserDefaults] setObject:@"NSUserDefaults传值" forKey:@"NSUserDefaults"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:@"NSUserDefaults传值" forKey:@"NSUserDefaults"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self presentViewController:nextVC animated:YES completion:nil];
     
@@ -63,7 +67,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 //    self.label.text = [DefaultInstance sharedInstance].str;
-    self.label.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"tf"];
+//    self.label.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"tf"];
 }
 
 - (void)viewDidLoad {

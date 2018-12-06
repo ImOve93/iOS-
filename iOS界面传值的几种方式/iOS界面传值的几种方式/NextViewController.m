@@ -27,7 +27,7 @@
         
 //        _textField.text = self.str;
 //        _textField.text = [DefaultInstance sharedInstance].str;
-        _textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"NSUserDefaults"];
+//        _textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"NSUserDefaults"];
     }
     
     return _textField;
@@ -48,8 +48,11 @@
 
 - (void)btnClick {
 //    [DefaultInstance sharedInstance].str = self.textField.text;
-    [[NSUserDefaults standardUserDefaults] setObject:self.textField.text forKey:@"tf"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.textField.text forKey:@"tf"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    if ([self.delegate respondsToSelector:@selector(passValue:)]) {
+        [self.delegate passValue:self.textField.text];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

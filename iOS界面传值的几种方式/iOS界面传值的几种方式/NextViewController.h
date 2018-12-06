@@ -9,10 +9,17 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol passValueDelegate <NSObject>
+
+- (void)passValue:(NSString *)str;
+
+@end
+
 
 @interface NextViewController : UIViewController
 
 //@property (nonatomic,copy)NSString *str;
+@property (nonatomic,weak)id<passValueDelegate> delegate;
 
 @end
 
