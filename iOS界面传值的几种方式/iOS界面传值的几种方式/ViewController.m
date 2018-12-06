@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "NextViewController.h"
+#import "DefaultInstance.h"
 
 @interface ViewController ()
 
@@ -49,12 +50,18 @@
     NextViewController *nextVC = [[NextViewController alloc] init];
     
     //属性传值
-    nextVC.str = @"属性传值";
+//    nextVC.str = @"属性传值";
+    [DefaultInstance sharedInstance].str = @"单例传值";
+    
     
     [self presentViewController:nextVC animated:YES completion:nil];
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.label.text = [DefaultInstance sharedInstance].str;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

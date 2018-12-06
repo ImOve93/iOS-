@@ -7,6 +7,7 @@
 //
 
 #import "NextViewController.h"
+#import "DefaultInstance.h"
 
 @interface NextViewController ()
 
@@ -24,7 +25,8 @@
         _textField.textColor = [UIColor blackColor];
         _textField.borderStyle = UITextBorderStyleLine;
         
-        _textField.text = self.str;
+//        _textField.text = self.str;
+        _textField.text = [DefaultInstance sharedInstance].str;
     }
     
     return _textField;
@@ -44,6 +46,7 @@
 }
 
 - (void)btnClick {
+    [DefaultInstance sharedInstance].str = self.textField.text;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
