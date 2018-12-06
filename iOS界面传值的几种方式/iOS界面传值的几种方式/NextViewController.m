@@ -26,7 +26,8 @@
         _textField.borderStyle = UITextBorderStyleLine;
         
 //        _textField.text = self.str;
-        _textField.text = [DefaultInstance sharedInstance].str;
+//        _textField.text = [DefaultInstance sharedInstance].str;
+        _textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"NSUserDefaults"];
     }
     
     return _textField;
@@ -46,7 +47,9 @@
 }
 
 - (void)btnClick {
-    [DefaultInstance sharedInstance].str = self.textField.text;
+//    [DefaultInstance sharedInstance].str = self.textField.text;
+    [[NSUserDefaults standardUserDefaults] setObject:self.textField.text forKey:@"tf"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

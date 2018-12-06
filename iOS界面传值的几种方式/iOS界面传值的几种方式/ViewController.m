@@ -26,6 +26,7 @@
         _label.backgroundColor = [UIColor blackColor];
         _label.textColor = [UIColor whiteColor];
         _label.font = [UIFont systemFontOfSize:20];
+        _label.numberOfLines = 0;
     }
     
     return _label;
@@ -51,8 +52,9 @@
     
     //属性传值
 //    nextVC.str = @"属性传值";
-    [DefaultInstance sharedInstance].str = @"单例传值";
-    
+//    [DefaultInstance sharedInstance].str = @"单例传值";
+    [[NSUserDefaults standardUserDefaults] setObject:@"NSUserDefaults传值" forKey:@"NSUserDefaults"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self presentViewController:nextVC animated:YES completion:nil];
     
@@ -60,7 +62,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.label.text = [DefaultInstance sharedInstance].str;
+//    self.label.text = [DefaultInstance sharedInstance].str;
+    self.label.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"tf"];
 }
 
 - (void)viewDidLoad {
