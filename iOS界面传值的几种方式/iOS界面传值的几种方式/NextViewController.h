@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic,copy)NSString *str;
 @property (nonatomic,weak)id<passValueDelegate> delegate;
 
+@property (nonatomic,copy) void (^block)(NSString *);
+
 @end
 
 NS_ASSUME_NONNULL_END

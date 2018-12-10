@@ -51,8 +51,10 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:self.textField.text forKey:@"tf"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     if ([self.delegate respondsToSelector:@selector(passValue:)]) {
-        [self.delegate passValue:self.textField.text];
+//        [self.delegate passValue:self.textField.text];
     }
+    self.block(self.textField.text);
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

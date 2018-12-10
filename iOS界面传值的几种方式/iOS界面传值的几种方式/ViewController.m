@@ -47,7 +47,7 @@
 }
 
 - (void)passValue:(NSString *)str {
-    self.label.text = str;
+//    self.label.text = str;
 }
 
 #pragma mark - btn 按钮点击事件
@@ -59,6 +59,9 @@
 //    [DefaultInstance sharedInstance].str = @"单例传值";
 //    [[NSUserDefaults standardUserDefaults] setObject:@"NSUserDefaults传值" forKey:@"NSUserDefaults"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
+    nextVC.block = ^(NSString *str){
+        self.label.text = str;
+    };
     
     [self presentViewController:nextVC animated:YES completion:nil];
     
