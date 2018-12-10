@@ -59,12 +59,18 @@
 //    [DefaultInstance sharedInstance].str = @"单例传值";
 //    [[NSUserDefaults standardUserDefaults] setObject:@"NSUserDefaults传值" forKey:@"NSUserDefaults"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
-    nextVC.block = ^(NSString *str){
-        self.label.text = str;
-    };
+//    nextVC.block = ^(NSString *str){
+//        self.label.text = str;
+//    };
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifHandle:) name:@"notify" object:nil];
     
     [self presentViewController:nextVC animated:YES completion:nil];
     
+}
+
+- (void)notifHandle:(NSNotification *)noti{
+    
+    self.label.text = noti.userInfo[@"not"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

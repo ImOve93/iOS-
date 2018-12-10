@@ -53,8 +53,8 @@
     if ([self.delegate respondsToSelector:@selector(passValue:)]) {
 //        [self.delegate passValue:self.textField.text];
     }
-    self.block(self.textField.text);
-    
+//    self.block(self.textField.text);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notify" object:nil userInfo:@{@"not": self.textField.text}];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
